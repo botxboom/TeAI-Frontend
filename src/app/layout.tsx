@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import SideNav from "./ui/dashboard/SideNav";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,9 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} overflow-hidden antialiased flex flex-row`}
       >
-        {children}
+        <div className="w-[300px] flex-none">
+          <SideNav />
+        </div>
+        <div className=" flex-grow   overflow-y-auto md:p-4">{children}</div>
       </body>
     </html>
   );
